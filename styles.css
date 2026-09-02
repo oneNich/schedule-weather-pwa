@@ -1,0 +1,209 @@
+/**
+ * styles.css
+ * -----------------------------------------------------------------------------
+ * SUMMARY:
+ * Same palette/rationale as the React Native version's theme.js: a deep
+ * slate-navy for the structured "schedule" side, warm amber reserved for
+ * the weather card and anything time-sensitive.
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --background: #F7F7F2;
+  --surface: #FFFFFF;
+  --slate: #2D3A45;
+  --slate-muted: #6B7A85;
+  --navy: #274B5E;
+  --amber: #E2963A;
+  --border: #E4E1D8;
+  --danger: #B5453A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--background);
+  color: var(--slate);
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 24px 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ---- Login screen ---------------------------------------------------- */
+
+#login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+#login-screen h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+#login-screen p {
+  color: var(--slate-muted);
+  max-width: 320px;
+  margin-bottom: 32px;
+}
+
+#google-signin-button {
+  /* Google's rendered button drops in here via the Identity Services script */
+}
+
+.footnote {
+  font-size: 12px;
+  color: var(--slate-muted);
+  margin-top: 32px;
+  max-width: 320px;
+}
+
+/* ---- Home screen ------------------------------------------------------- */
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-row h1 {
+  font-size: 26px;
+  margin: 0;
+}
+
+#sign-out-button {
+  background: none;
+  border: none;
+  color: var(--slate-muted);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.section-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--slate-muted);
+  letter-spacing: 0.3px;
+  margin: 8px 0;
+}
+
+/* ---- Weather search row -------------------------------------------------- */
+
+.weather-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#city-input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: var(--slate);
+}
+
+#weather-search-button {
+  background: var(--amber);
+  color: var(--surface);
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#weather-place-name {
+  margin: 0 0 16px 0;
+}
+
+/* ---- Hourly grid (Time | Weather | Schedule) ----------------------------- */
+
+.hourly-grid {
+  display: grid;
+  grid-template-columns: 64px 96px 1fr;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.grid-header {
+  background: var(--navy);
+  color: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 8px 10px;
+  position: sticky;
+  top: 0;
+}
+
+.grid-cell {
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.grid-cell.time-cell {
+  color: var(--slate-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-cell.weather-cell {
+  gap: 6px;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.grid-cell.schedule-cell {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.grid-cell.current-hour {
+  background: #FBF3E7; /* soft amber tint marking "now" */
+}
+
+.event-chip {
+  background: var(--navy);
+  color: var(--surface);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 13px;
+}
+
+.weather-emoji {
+  font-size: 18px;
+}
+
+.error-text {
+  color: var(--danger);
+  margin-top: 8px;
+}
+
+.muted-text {
+  color: var(--slate-muted);
+}
+
+.hidden {
+  display: none !important;
+}

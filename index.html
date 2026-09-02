@@ -1,0 +1,65 @@
+<!--
+  index.html
+  -----------------------------------------------------------------------------
+  SUMMARY:
+  The single HTML page for the app. Two <section> elements act as "screens" -
+  app.js shows/hides them by toggling a "hidden" class, the same idea as
+  switching between LoginScreen and HomeScreen in the React Native version.
+  -----------------------------------------------------------------------------
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule & Weather</title>
+
+  <!-- Makes the site installable to a phone's home screen -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#274B5E" />
+
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Google Identity Services - handles the OAuth sign-in popup/redirect -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- SCREEN 1: Login -->
+  <section id="login-screen" class="screen">
+    <h1>Schedule & Weather</h1>
+    <p>Sign in with your Google account to see today's calendar and local weather in one place.</p>
+    <div id="google-signin-button"></div>
+    <p class="footnote">Your email is used only to read your calendar. This app never reads or sends email.</p>
+  </section>
+
+  <!-- SCREEN 2: Home (hidden until login succeeds) -->
+  <section id="home-screen" class="screen hidden">
+    <div class="header-row">
+      <h1>Today</h1>
+      <button id="sign-out-button">Sign out</button>
+    </div>
+
+    <div class="weather-input-row">
+      <input id="city-input" type="text" placeholder="City or ZIP code" />
+      <button id="weather-search-button">Go</button>
+    </div>
+    <p id="weather-loading" class="muted-text hidden">Loading weather…</p>
+    <p id="weather-error" class="error-text hidden"></p>
+    <p id="weather-place-name" class="muted-text hidden"></p>
+
+    <p id="schedule-loading" class="muted-text">Loading your calendar…</p>
+    <p id="schedule-error" class="error-text hidden"></p>
+
+    <div id="hourly-grid" class="hourly-grid hidden">
+      <div class="grid-header">Time</div>
+      <div class="grid-header">Weather</div>
+      <div class="grid-header">Schedule</div>
+      <!-- 24 rows of 3 cells each get appended here by app.js -->
+    </div>
+  </section>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
